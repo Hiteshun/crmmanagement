@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>CRM Dashboard</title>
+
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f5f6fa;
+    }
+
+    .sidebar {
+      width: 220px;
+      height: 100vh;
+      background: #1e293b;
+      color: #fff;
+      position: fixed;
+      padding: 20px;
+    }
+
+    .sidebar h2 {
+      margin: 0 0 20px;
+      font-size: 20px;
+    }
+
+    .sidebar a {
+      display: block;
+      color: #cbd5e1;
+      text-decoration: none;
+      padding: 10px 0;
+    }
+
+    .sidebar a:hover {
+      color: #fff;
+    }
+
+    .main {
+      margin-left: 220px;
+      padding: 20px;
+    }
+
+    .header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+    }
+
+    .cards {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 15px;
+    }
+
+    .card {
+      background: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0,0,0,0.08);
+    }
+
+    .card h3 {
+      margin: 0;
+      font-size: 14px;
+      color: #64748b;
+    }
+
+    .card p {
+      margin: 8px 0 0;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    table {
+      width: 100%;
+      background: #fff;
+      margin-top: 20px;
+      border-collapse: collapse;
+      border-radius: 8px;
+      overflow: hidden;
+    }
+
+    th, td {
+      padding: 12px;
+      text-align: left;
+      border-bottom: 1px solid #eee;
+    }
+
+    th {
+      background: #f1f5f9;
+      font-size: 14px;
+    }
+
+    @media (max-width: 768px) {
+      .sidebar {
+        position: relative;
+        width: 100%;
+        height: auto;
+      }
+
+      .main {
+        margin-left: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Sidebar -->
+  <div class="sidebar">
+    <h2>CRM</h2>
+    <a href="#">Dashboard</a>
+    <a href="#">Leads</a>
+    <a href="#">Deals</a>
+    <a href="#">Tasks</a>
+    <a href="#">Logout</a>
+  </div>
+
+  <!-- Main -->
+  <div class="main">
+    <div class="header">
+      <h1>Dashboard</h1>
+      <span>Welcome, User</span>
+    </div>
+
+    <!-- Stats -->
+    <div class="cards">
+      <div class="card">
+        <h3>Total Leads</h3>
+        <p>120</p>
+      </div>
+      <div class="card">
+        <h3>Active Deals</h3>
+        <p>35</p>
+      </div>
+      <div class="card">
+        <h3>Follow-ups Today</h3>
+        <p>8</p>
+      </div>
+      <div class="card">
+        <h3>Won Deals</h3>
+        <p>15</p>
+      </div>
+    </div>
+
+    <!-- Recent Leads -->
+    <table>
+      <thead>
+        <tr>
+          <th>Lead Name</th>
+          <th>Phone</th>
+          <th>Status</th>
+          <th>Date</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Rahul Sharma</td>
+          <td>9876543210</td>
+          <td>New</td>
+          <td>Today</td>
+        </tr>
+        <tr>
+          <td>Anita Verma</td>
+          <td>9123456780</td>
+          <td>Follow-up</td>
+          <td>Yesterday</td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+
+</body>
+</html>
