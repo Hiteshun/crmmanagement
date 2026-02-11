@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Tuition CRM - Login</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+</head>
+<body class="bg-gray-100 flex items-center justify-center h-screen">
+
+<div class="bg-white p-8 rounded-xl shadow-md w-96">
+  <h2 class="text-2xl font-bold mb-6 text-center">Tuition CRM</h2>
+
+  <input id="email" type="email" placeholder="Email"
+    class="w-full mb-3 p-2 border rounded">
+
+  <input id="password" type="password" placeholder="Password"
+    class="w-full mb-4 p-2 border rounded">
+
+  <button onclick="signUp()"
+    class="w-full bg-blue-500 text-white p-2 rounded mb-2">
+    Sign Up
+  </button>
+
+  <button onclick="login()"
+    class="w-full bg-green-500 text-white p-2 rounded">
+    Login
+  </button>
+
+  <p id="message" class="text-red-500 mt-3 text-sm"></p>
+</div>
+
+<script>
+  const supabaseUrl = "https://xloicmlcuonlsqagcvkw.supabase.co";
+  const supabaseKey = "sb_publishable_Qp5Bx1JFwQatbaurKFfTvw_zfYYUj_W";
+
+  const supabase = window.supabase.createClient(supabaseUrl, supabaseKey);
+
+  async function signUp() {
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+
+    const { data, error } = await supabase.auth.signUp({
+      email: email,
+      password: password
+    });
+
+    if (error) {
+      document.getElementById("message").innerText = error.message;
+    } else {
+      document.getElementById("message").innerText = "Signup successful!";
+    }
+  }
+
+  async function login() {
+    const email = document.getElementById("email").value;
+    const password = document.getElementById("password").value;
+
+    const { data, error } = await supabase.auth.signInWithPassword({
+      email: email,
+      password: password
+    });
+
+    if (error) {
+      document.getElementById("message").innerText = error.message;
+    } else {
+      window.location.href = "dashboard.html";
+    }
+  }
+</script>
+
+</body>
+</html>
