@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>CRM SaaS</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 
 <style>
@@ -29,15 +29,16 @@ body{
   color:var(--text);
 }
 
-/* AUTH LAYOUT */
+/* ================= AUTH ================= */
 
 .auth-wrapper{
+  min-height:100vh;
   display:flex;
-  height:100vh;
+  flex-direction:column;
 }
 
 .auth-left{
-  flex:1;
+  height:250px;
   background:url('https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=1200') center/cover no-repeat;
   position:relative;
 }
@@ -51,31 +52,33 @@ body{
 
 .auth-content{
   position:absolute;
-  bottom:50px;
-  left:50px;
-  max-width:400px;
+  bottom:20px;
+  left:20px;
+  right:20px;
   z-index:2;
 }
 
 .auth-content h1{
-  font-size:32px;
-  margin-bottom:10px;
+  font-size:22px;
+  margin-bottom:6px;
 }
 
 .auth-right{
-  width:420px;
+  flex:1;
   background:#111827;
   display:flex;
-  align-items:center;
   justify-content:center;
+  align-items:center;
+  padding:30px 20px;
 }
 
 .auth-box{
-  width:320px;
+  width:100%;
+  max-width:350px;
 }
 
 .auth-box h2{
-  margin-bottom:25px;
+  margin-bottom:20px;
 }
 
 .input-group{
@@ -103,18 +106,18 @@ button{
 }
 
 .switch{
-  margin-top:15px;
+  margin-top:12px;
   text-align:center;
   font-size:14px;
   color:#60a5fa;
   cursor:pointer;
 }
 
-/* DASHBOARD */
+/* ================= DASHBOARD ================= */
 
 .dashboard{
   display:none;
-  height:100vh;
+  min-height:100vh;
   display:flex;
 }
 
@@ -123,10 +126,11 @@ button{
   background:#111827;
   padding:25px;
   border-right:1px solid var(--border);
+  transition:0.3s;
 }
 
 .sidebar h2{
-  margin-bottom:30px;
+  margin-bottom:25px;
 }
 
 .sidebar ul{
@@ -146,44 +150,44 @@ button{
 
 .main{
   flex:1;
-  padding:30px;
+  padding:20px;
 }
 
 .topbar{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  margin-bottom:25px;
+  margin-bottom:20px;
 }
 
 .cards{
   display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:20px;
-  margin-bottom:30px;
+  grid-template-columns:1fr;
+  gap:15px;
+  margin-bottom:20px;
 }
 
 .card{
   background:var(--card);
-  padding:20px;
-  border-radius:10px;
+  padding:18px;
+  border-radius:8px;
   border:1px solid var(--border);
 }
 
 .card h3{
   font-size:14px;
   color:#94a3b8;
-  margin-bottom:8px;
+  margin-bottom:6px;
 }
 
 .card h1{
-  font-size:24px;
+  font-size:20px;
 }
 
 .chart-container{
   background:var(--card);
-  padding:20px;
-  border-radius:10px;
+  padding:15px;
+  border-radius:8px;
   border:1px solid var(--border);
 }
 
@@ -191,17 +195,55 @@ button{
   color:#f87171;
   cursor:pointer;
 }
+
+/* ============ RESPONSIVE BREAKPOINTS ============ */
+
+@media(min-width:768px){
+
+  .auth-wrapper{
+    flex-direction:row;
+  }
+
+  .auth-left{
+    flex:1;
+    height:auto;
+  }
+
+  .auth-right{
+    width:420px;
+  }
+
+  .cards{
+    grid-template-columns:repeat(2,1fr);
+  }
+
+}
+
+@media(min-width:1100px){
+  .cards{
+    grid-template-columns:repeat(4,1fr);
+  }
+}
+
+@media(max-width:768px){
+  .sidebar{
+    display:none;
+  }
+  .dashboard{
+    flex-direction:column;
+  }
+}
 </style>
 </head>
 
 <body>
 
-<!-- LOGIN PAGE -->
+<!-- LOGIN -->
 <div class="auth-wrapper" id="loginPage">
   <div class="auth-left">
     <div class="auth-content">
-      <h1>Powerful CRM for Growing Teams</h1>
-      <p>Manage leads, clients and revenue in one secure platform.</p>
+      <h1>Smart CRM for Modern Businesses</h1>
+      <p>Track leads. Close deals. Grow revenue.</p>
     </div>
   </div>
 
@@ -220,33 +262,6 @@ button{
   </div>
 </div>
 
-<!-- SIGNUP PAGE -->
-<div class="auth-wrapper" id="signupPage" style="display:none;">
-  <div class="auth-left">
-    <div class="auth-content">
-      <h1>Start Managing Your Sales Today</h1>
-      <p>Create your account and grow your business.</p>
-    </div>
-  </div>
-
-  <div class="auth-right">
-    <div class="auth-box">
-      <h2>Sign Up</h2>
-      <div class="input-group">
-        <input type="text" placeholder="Full Name">
-      </div>
-      <div class="input-group">
-        <input type="email" placeholder="Email">
-      </div>
-      <div class="input-group">
-        <input type="password" placeholder="Password">
-      </div>
-      <button onclick="signup()">Create Account</button>
-      <div class="switch" onclick="showLogin()">Already have account?</div>
-    </div>
-  </div>
-</div>
-
 <!-- DASHBOARD -->
 <div class="dashboard" id="dashboard">
   <div class="sidebar">
@@ -261,7 +276,7 @@ button{
 
   <div class="main">
     <div class="topbar">
-      <h2>Dashboard Overview</h2>
+      <h2>Overview</h2>
       <div class="logout" onclick="logout()">Logout</div>
     </div>
 
@@ -279,7 +294,7 @@ button{
         <h1>₹3,45,000</h1>
       </div>
       <div class="card">
-        <h3>Conversion Rate</h3>
+        <h3>Conversion</h3>
         <h1>24%</h1>
       </div>
     </div>
@@ -292,28 +307,18 @@ button{
 
 <script>
 function showSignup(){
-  document.getElementById("loginPage").style.display="none";
-  document.getElementById("signupPage").style.display="flex";
+  alert("Signup page can be added similarly.");
 }
-function showLogin(){
-  document.getElementById("signupPage").style.display="none";
-  document.getElementById("loginPage").style.display="flex";
-}
-function signup(){
-  alert("Account created successfully");
-  showLogin();
-}
+
 function login(){
   document.getElementById("loginPage").style.display="none";
   document.getElementById("dashboard").style.display="flex";
 
-  const ctx=document.getElementById('salesChart');
-  new Chart(ctx,{
+  new Chart(document.getElementById("salesChart"),{
     type:'line',
     data:{
       labels:['Jan','Feb','Mar','Apr','May','Jun'],
       datasets:[{
-        label:'Sales',
         data:[12000,19000,15000,22000,28000,35000],
         borderColor:'#2563eb',
         backgroundColor:'rgba(37,99,235,0.2)',
@@ -322,7 +327,7 @@ function login(){
       }]
     },
     options:{
-      plugins:{legend:{labels:{color:'#fff'}}},
+      plugins:{legend:{display:false}},
       scales:{
         x:{ticks:{color:'#fff'}},
         y:{ticks:{color:'#fff'}}
@@ -330,6 +335,7 @@ function login(){
     }
   });
 }
+
 function logout(){
   document.getElementById("dashboard").style.display="none";
   document.getElementById("loginPage").style.display="flex";
